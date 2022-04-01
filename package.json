@@ -1,9 +1,21 @@
 {
-    "name": "@p/logger",
+    "name": "@pleahmacaka/logger",
     "version": "1.0.0",
     "dependencies": {},
     "description": "Simple TypeScript logger with no dependencies",
-    "main": "index.js",
+    "main": "src/logger.ts",
     "author": "PleahMaCaka",
-    "license": "MIT"
+    "license": "MIT",
+    "homepage": "https://github.com/PleahMaCaka/P-Logger",
+    "keywords": [
+        "typescript",
+        "simple",
+        "logger",
+        "no dependencies",
+        "TS"
+    ],
+    "bugs": {
+        "url": "https://github.com/PleahMaCaka/P-Logger/issues",
+        "email": "PleahMaCaka@gmail.com"
+    }
 }
