@@ -1,0 +1,9 @@
+{
+    "name": "@p/logger",
+    "version": "1.0.0",
+    "dependencies": {},
+    "description": "Simple TypeScript logger with no dependencies",
+    "main": "index.js",
+    "author": "PleahMaCaka",
+    "license": "MIT"
+}
