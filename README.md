@@ -6,8 +6,8 @@
 
 ### Example Code
 
-![code](./img/code.png)
+![code](https://github.com/PleahMaCaka/P-Logger/blob/master/img/code.png?raw=true)
 
 ### Output logs
 
-![log](./img/log.png)
+![log](https://raw.githubusercontent.com/PleahMaCaka/P-Logger/master/img/log.png?raw=true)
