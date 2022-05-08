@@ -1,4 +1,5 @@
+.github
 .idea
-/build
-/test
+src
+test
 logger.iml

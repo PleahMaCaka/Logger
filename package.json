@@ -1,6 +1,6 @@
 {
     "name": "@pleahmacaka/logger",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "dependencies": {},
     "description": "Simple TypeScript logger with no dependencies",
     "main": "package/logger.js",
