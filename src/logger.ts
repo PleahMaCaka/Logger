@@ -23,6 +23,10 @@ function getDate(): string {
 	return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 }
 
+function date(): string {
+	return `[${getDate()}] ::`
+}
+
 export default class Logger {
 
 	static log(type?: Level | LogType, ...content: any): void {
@@ -61,5 +65,21 @@ export default class Logger {
 			default:
 				throw new TypeError("The logger must be of one of the following types: INFO, WARN, ERROR, DEBUG, CRITICAL")
 		}
+	}
+
+	public static info(...content: any) {
+		return console.log(color.green, `${date()} [INFO] :: ${content}`, color.reset)
+	}
+	public static warn(...content: any) {
+		return console.log(color.yellow, `${date()} [WARN] :: ${content}`, color.reset)
+	}
+	public static error(...content: any) {
+		return console.log(color.red, `${date()} [ERROR] :: ${content}`, color.reset)
+	}
+	public static debug(...content: any) {
+		return console.log(color.blue, `${date()} [DEBUG] :: ${content}`, color.reset)
+	}
+	public static critical(...content: any) {
+		return console.log(color.red + color.bold, `${date()} [CRITICAL] :: ${content}`, color.reset)
 	}
 }
