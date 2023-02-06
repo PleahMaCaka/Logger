@@ -1,5 +1,7 @@
 ## Preview
 
+[NPM](https://www.npmjs.com/package/@pleahmacaka/logger)
+
 ### Installation
 `npm install @pleahmacaka/logger`  
 `yarn add @pleahmacaka/logger`
