@@ -1,89 +1,90 @@
 export enum Level {
-	"INFO",
-	"WARN",
-	"ERROR",
-	"DEBUG",
-	"CRITICAL"
+    "INFO",
+    "WARN",
+    "ERROR",
+    "DEBUG",
+    "CRITICAL"
 }
 
 export type LogType = "INFO" | "WARN" | "ERROR" | "DEBUG" | "CRITICAL"
 
 const color = {
-	red: "\x1b[31m",
-	green: "\x1b[32m",
-	yellow: "\x1b[33m",
-	blue: "\x1b[34m",
-	white: "\x1b[37m",
-	bold: "\x1b[1m",
-	reset: "\x1b[0m"
+    red: "\x1b[31m",
+    green: "\x1b[32m",
+    yellow: "\x1b[33m",
+    blue: "\x1b[34m",
+    white: "\x1b[37m",
+    bold: "\x1b[1m",
+    reset: "\x1b[0m"
 }
 
-function getDate(): string {
-	const date: Date = new Date()
-	return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-}
-
-function date(): string {
-	return `[${getDate()}] ::`
-}
 
 export default class Logger {
 
-	public static debugLog: boolean = true
+    private static date(): string {
+        const date = new Date()
+        const covered = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        return `[${covered}] ::`
+    }
 
-	static log(type?: Level | LogType, ...content: any): void {
-		/**
-		 * @param type Specifies the log type. Be like: Level.INFO
-		 * @param content any type, is the content to be logged.
-		 */
+    public static debugMode: boolean = true
 
-		// if not have type argument, forced config to INFO
-		if (type === undefined || null) type = Level.INFO
+    public static log = (type?: Level | LogType, ...content: any): void => {
+        /**
+         * @param type Specifies the log type. Be like: Level.INFO
+         * @param content any type, is the content to be logged.
+         */
 
-		// Converts LogType to Level, which is an Enum
-		if (type === "INFO") type = Level.INFO
-		if (type === "WARN") type = Level.WARN
-		if (type === "ERROR") type = Level.ERROR
-		if (type === "DEBUG") type = Level.DEBUG
-		if (type === "CRITICAL") type = Level.CRITICAL
+        // if not have type argument, forced config to INFO
+        if (type === undefined || null) type = Level.INFO
 
-		const date = `[${getDate()}] ::`
-		
-		switch (type) {
-			case Level.INFO:
-				return Logger.info(content)
+        // Converts LogType to Level, which is an Enum
+        if (type === "INFO") type = Level.INFO
+        if (type === "WARN") type = Level.WARN
+        if (type === "ERROR") type = Level.ERROR
+        if (type === "DEBUG") type = Level.DEBUG
+        if (type === "CRITICAL") type = Level.CRITICAL
 
-			case Level.WARN:
-				return Logger.warn(content)
+        switch (type) {
+            case Level.INFO:
+                return Logger.info(content)
 
-			case Level.ERROR:
-				return Logger.error(content)
+            case Level.WARN:
+                return Logger.warn(content)
 
-			case Level.DEBUG:
-				return Logger.debug(content)
+            case Level.ERROR:
+                return Logger.error(content)
 
-			case Level.CRITICAL:
-				return Logger.critical(content)
+            case Level.DEBUG:
+                return Logger.debug(content)
 
-			default:
-				throw new TypeError("The logger must be of one of the following types: INFO, WARN, ERROR, DEBUG, CRITICAL")
-		}
-	}
+            case Level.CRITICAL:
+                return Logger.critical(content)
 
-	public static info(...content: any) {
-		return console.log(color.green, `${date()} [INFO] :: ${content}`, color.reset)
-	}
-	public static warn(...content: any) {
-		return console.log(color.yellow, `${date()} [WARN] :: ${content}`, color.reset)
-	}
-	public static error(...content: any) {
-		return console.log(color.red, `${date()} [ERROR] :: ${content}`, color.reset)
-	}
-	public static debug(...content: any) {
-		if (!this.debugLog) return
-		return console.log(color.blue, `${date()} [DEBUG] :: ${content}`, color.reset)
-	}
-	public static critical(...content: any) {
-		return console.log(color.red + color.bold, `${date()} [CRITICAL] :: ${content}`, color.reset)
-	}
+            default:
+                throw new TypeError("The logger must be of one of the following types: INFO, WARN, ERROR, DEBUG, CRITICAL")
+        }
+    }
+
+    public static info(...content: any) {
+        return console.log(color.green, `${this.date()} [INFO] :: ${content}`, color.reset)
+    }
+
+    public static warn(...content: any) {
+        return console.log(color.yellow, `${this.date()} [WARN] :: ${content}`, color.reset)
+    }
+
+    public static error(...content: any) {
+        return console.log(color.red, `${this.date()} [ERROR] :: ${content}`, color.reset)
+    }
+
+    public static debug(...content: any) {
+        if (!this.debugMode) return
+        return console.log(color.blue, `${this.date()} [DEBUG] :: ${content}`, color.reset)
+    }
+
+    public static critical(...content: any) {
+        return console.log(color.red + color.bold, `${this.date()} [CRITICAL] :: ${content}`, color.reset)
+    }
+
 }
