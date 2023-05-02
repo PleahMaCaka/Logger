@@ -18,8 +18,7 @@ const color = {
     reset: "\x1b[0m"
 }
 
-
-export default class Logger {
+export class Logger {
 
     private static date(): string {
         const date = new Date()

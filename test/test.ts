@@ -1,4 +1,4 @@
-import Logger, { Level } from "../src/logger";
+import { Level, Logger } from "../src/logger"
 
 Logger.log("INFO", "Don't dwell on the past.")
 Logger.log(Level.INFO, "Believe in yourself.")
